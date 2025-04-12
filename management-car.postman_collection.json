@@ -1,0 +1,704 @@
+{
+	"info": {
+		"_postman_id": "95687802-c66e-48d0-a242-4a9ff94f157e",
+		"name": "management-car",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42125477"
+	},
+	"item": [
+		{
+			"name": "cars",
+			"item": [
+				{
+					"name": "CarAvailable",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cars/available",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cars",
+								"available"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CarList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cars",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cars"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CarCreate",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"BMW\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cars",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CarShow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cars/18",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cars",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CarUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"BMW\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/cars/18",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cars",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CarDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/cars/18",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cars",
+								"18"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "options",
+			"item": [
+				{
+					"name": "OptionList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/options",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OptionCreate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Leather Seats\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/options",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OptionShow",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Climate Control\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/options/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"options",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OptionUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Sunroof 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/options/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"options",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OptionDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/options/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"options",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "configurations",
+			"item": [
+				{
+					"name": "ConfigurationList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/configurations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigurationCreate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"car_id\": 20,\n    \"name\": \"Premium Plus\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/configurations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigurationShow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/configurations/12",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigurationUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"car_id\": 20,\n    \"name\": \"Super Premium Class\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/configurations/12",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigurationDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/configurations/12",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigurationOptionList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/configurations/12/options",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"12",
+								"options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigurationAddOption",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/configurations/12/options/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"12",
+								"options",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigurationDeleteOption",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/configurations/12/options/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"configurations",
+								"12",
+								"options",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prices",
+			"item": [
+				{
+					"name": "PriceList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/prices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PriceCreate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"configuration_id\": 12,\n    \"price\": 55000,\n    \"start_date\": \"2025-04-10\",\n    \"end_date\": \"2025-09-10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/prices",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PriceShow",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/prices/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prices",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PriceUpdate",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"configuration_id\": 12,\n    \"price\": 91600,\n    \"start_date\": \"2025-04-11\",\n    \"end_date\": \"2025-09-10\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/prices/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prices",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PriceDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/prices/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"prices",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}

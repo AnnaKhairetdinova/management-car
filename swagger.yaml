@@ -1,0 +1,556 @@
+openapi: 3.0.0
+info:
+  title: Car Management API
+  version: 1.0.0
+  description: API для управления автомобилями, их конфигурациями, опциями и ценами
+
+servers:
+  - url: http://127.0.0.1:8000
+    description: Локальный сервер
+
+paths:
+  /api/cars/available:
+    get:
+      summary: Получить доступные автомобили
+      tags:
+        - cars
+      responses:
+        '200':
+          description: Список доступных автомобилей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+
+  /api/cars:
+    get:
+      summary: Получить список всех автомобилей
+      tags:
+        - cars
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 10
+      responses:
+        '200':
+          description: Список автомобилей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Car'
+    post:
+      summary: Создать новый автомобиль
+      tags:
+        - cars
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: BMW
+      responses:
+        '201':
+          description: Автомобиль успешно создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+
+  /api/cars/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Получить информацию об автомобиле
+      tags:
+        - cars
+      responses:
+        '200':
+          description: Информация об автомобиле
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '404':
+          description: Автомобиль не найден
+    patch:
+      summary: Обновить информацию об автомобиле
+      tags:
+        - cars
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: BMW
+      responses:
+        '200':
+          description: Автомобиль успешно обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+        '404':
+          description: Автомобиль не найден
+    delete:
+      summary: Удалить автомобиль
+      tags:
+        - cars
+      responses:
+        '204':
+          description: Автомобиль успешно удален
+        '404':
+          description: Автомобиль не найден
+
+  /api/options:
+    get:
+      summary: Получить список всех опций
+      tags:
+        - options
+      responses:
+        '200':
+          description: Список опций
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Option'
+    post:
+      summary: Создать новую опцию
+      tags:
+        - options
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Leather Seats
+      responses:
+        '201':
+          description: Опция успешно создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Option'
+
+  /api/options/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Получить информацию об опции
+      tags:
+        - options
+      responses:
+        '200':
+          description: Информация об опции
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Option'
+        '404':
+          description: Опция не найдена
+    patch:
+      summary: Обновить информацию об опции
+      tags:
+        - options
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Sunroof 2
+      responses:
+        '200':
+          description: Опция успешно обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Option'
+        '404':
+          description: Опция не найдена
+    delete:
+      summary: Удалить опцию
+      tags:
+        - options
+      responses:
+        '204':
+          description: Опция успешно удалена
+        '404':
+          description: Опция не найдена
+
+  /api/configurations:
+    get:
+      summary: Получить список всех конфигураций
+      tags:
+        - configurations
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            example: 10
+      responses:
+        '200':
+          description: Список конфигураций
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Configuration'
+    post:
+      summary: Создать новую конфигурацию
+      tags:
+        - configurations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                car_id:
+                  type: integer
+                  example: 20
+                name:
+                  type: string
+                  example: Premium Plus
+      responses:
+        '201':
+          description: Конфигурация успешно создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Configuration'
+
+  /api/configurations/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Получить информацию о конфигурации
+      tags:
+        - configurations
+      responses:
+        '200':
+          description: Информация о конфигурации
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Configuration'
+        '404':
+          description: Конфигурация не найдена
+    patch:
+      summary: Обновить информацию о конфигурации
+      tags:
+        - configurations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                car_id:
+                  type: integer
+                  example: 20
+                name:
+                  type: string
+                  example: Super Premium Class
+      responses:
+        '200':
+          description: Конфигурация успешно обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Configuration'
+        '404':
+          description: Конфигурация не найдена
+    delete:
+      summary: Удалить конфигурацию
+      tags:
+        - configurations
+      responses:
+        '204':
+          description: Конфигурация успешно удалена
+        '404':
+          description: Конфигурация не найдена
+
+  /api/configurations/{id}/options:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Получить список опций для конфигурации
+      tags:
+        - configurations
+      responses:
+        '200':
+          description: Список опций для конфигурации
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Option'
+        '404':
+          description: Конфигурация не найдена
+
+  /api/configurations/{id}/options/{optionId}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: optionId
+        in: path
+        required: true
+        schema:
+          type: integer
+    post:
+      summary: Добавить опцию к конфигурации
+      tags:
+        - configurations
+      responses:
+        '201':
+          description: Опция успешно добавлена к конфигурации
+        '404':
+          description: Конфигурация или опция не найдена
+    delete:
+      summary: Удалить опцию из конфигурации
+      tags:
+        - configurations
+      responses:
+        '204':
+          description: Опция успешно удалена из конфигурации
+        '404':
+          description: Конфигурация или опция не найдена
+
+  /api/prices:
+    get:
+      summary: Получить список всех цен
+      tags:
+        - prices
+      responses:
+        '200':
+          description: Список цен
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Price'
+    post:
+      summary: Создать новую цену
+      tags:
+        - prices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuration_id:
+                  type: integer
+                  example: 12
+                price:
+                  type: number
+                  format: float
+                  example: 55000
+                start_date:
+                  type: string
+                  format: date
+                  example: 2025-04-10
+                end_date:
+                  type: string
+                  format: date
+                  example: 2025-09-10
+      responses:
+        '201':
+          description: Цена успешно создана
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Price'
+
+  /api/prices/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Получить информацию о цене
+      tags:
+        - prices
+      responses:
+        '200':
+          description: Информация о цене
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Price'
+        '404':
+          description: Цена не найдена
+    patch:
+      summary: Обновить информацию о цене
+      tags:
+        - prices
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                configuration_id:
+                  type: integer
+                  example: 12
+                price:
+                  type: number
+                  format: float
+                  example: 91600
+                start_date:
+                  type: string
+                  format: date
+                  example: 2025-04-11
+                end_date:
+                  type: string
+                  format: date
+                  example: 2025-09-10
+      responses:
+        '200':
+          description: Цена успешно обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Price'
+        '404':
+          description: Цена не найдена
+    delete:
+      summary: Удалить цену
+      tags:
+        - prices
+      responses:
+        '204':
+          description: Цена успешно удалена
+        '404':
+          description: Цена не найдена
+
+components:
+  schemas:
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Option:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Configuration:
+      type: object
+      properties:
+        id:
+          type: integer
+        car_id:
+          type: integer
+        name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        car:
+          $ref: '#/components/schemas/Car'
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/Option'
+
+    Price:
+      type: object
+      properties:
+        id:
+          type: integer
+        configuration_id:
+          type: integer
+        price:
+          type: number
+          format: float
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        configuration:
+          $ref: '#/components/schemas/Configuration' 
